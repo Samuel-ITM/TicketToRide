@@ -1,13 +1,23 @@
 #include <iostream>
+#include <string>
+#include <map>
 
+#include "./Tablero.cpp"
 #include "./carta.cpp"
 
 int main() {
+    system("cls");
+    system("pause");
+
+    Tablero tablero;
+    tablero.inicializarTablero();
+    tablero.mostrarTablero();
     
-    Carta carta;
-    carta.color = 2;
+
     
-    carta.mostrar();
+
+    system("PAUSE");
+    
 
     return 0;
 }
