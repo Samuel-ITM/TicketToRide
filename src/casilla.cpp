@@ -4,16 +4,16 @@
 
 using namespace std;
 
-class Carta{
+class casilla{
 
     public:
-        string paleta[6] = {BG_RED, BG_BLUE, BG_GREEN, BG_MAGENTA, BG_GRAY, BG_ORANGE};
+        string paleta[8] = {BG_RED, BG_BLUE, BG_GREEN, BG_MAGENTA, BG_GRAY, BG_ORANGE, BG_BLACK, BG_WHITE};
         int color;
 
         void mostrar();
 };
 
 
-void Carta::mostrar(){
+void casilla::mostrar(){
     cout<< paleta[color] << "  " << RESET ;
 }
