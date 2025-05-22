@@ -15,5 +15,5 @@ class Carta{
 
 
 void Carta::mostrar(){
-    cout<< paleta[color] << " " << RESET ;
+    cout<< paleta[color] << "  " << RESET ;
 }
