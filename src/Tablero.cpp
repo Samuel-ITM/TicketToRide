@@ -24,6 +24,46 @@ void Tablero::inicializarTablero(){
     }
     
     
+    //A
+    tablero[{8,1}] = BG_BLACK;
+    //B
+    tablero[{5,3}] = BG_BLACK;
+    //C
+    tablero[{14,3}] = BG_BLACK;
+    //D
+    tablero[{1,4}] = BG_BLACK;
+    //E
+    tablero[{4,6}] = BG_BLACK;
+    //F
+    tablero[{8,6}] = BG_BLACK;
+    //G
+    tablero[{12,6}] = BG_BLACK;
+    //H
+    tablero[{8,10}] = BG_BLACK;
+    //I
+    tablero[{5,11}] = BG_BLACK;
+    //J
+    tablero[{2,12}] = BG_BLACK;
+    //K
+    tablero[{8,13}] = BG_BLACK;
+    //L
+    tablero[{12,13}] = BG_BLACK;
+    //M
+    tablero[{14,14}] = BG_BLACK;
+    //N
+    tablero[{2,15}] = BG_BLACK;
+    //O
+    tablero[{4,17}] = BG_BLACK;
+    //P
+    tablero[{8,17}] = BG_BLACK;
+    //Q
+    tablero[{12,17}] = BG_BLACK;
+    //R
+    tablero[{6,20}] = BG_BLACK;
+    //S
+    tablero[{10,20}] = BG_BLACK;
+    
+
     //intersecciones
     //A B rojo
     tablero[{5,1}] = BG_RED;
@@ -146,8 +186,11 @@ void Tablero::mostrarTablero(){
 
     for (int fila = 1; fila <= 14; ++fila) {
         for (int col = 1; col <= 20; ++col) {
-            cout << tablero[{fila, col}]<< "  " <<RESET;// dos espacios el tamano
-            //cout << "a";
+            if (tablero[{fila,col}] == tablero[{8,1}]){
+                cout << " A " << RESET;
+            }else{
+            cout << tablero[{fila, col}]<< "   " <<RESET;// dos espacios el tamano
+            }
         }
         cout << endl;
     }
