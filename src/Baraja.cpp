@@ -45,11 +45,21 @@ void Baraja::barajar(){
     Carta aux;
        
     for (int i = 0; i < 2000; i++) {
-        int a = rand() % 36; 
-        int b = rand() % 36; 
+        int a = rand() % 72; 
+        int b = rand() % 72; 
           
         Carta aux = cartas[a];
         cartas[a] = cartas[b];
         cartas[b] = aux;
     }
+}
+
+vector<zonaCartas> Baraja :: repartir(int repartir1){
+	vector<zonaCartas> carticas(4);
+	int indice=0;
+	for(int i=0; i<4; i++){
+    		carticas[i].agregarcarta(cartas[indice]);
+    		indice++;
+}	
+	return carticas;
 }
