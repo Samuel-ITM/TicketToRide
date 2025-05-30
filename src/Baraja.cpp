@@ -1,65 +1,58 @@
+
+#ifndef BARAJA_H
+#define BARAJA_H
 #include <iostream>
-#include <string>
 #include <vector>
-#include <stack>
+#include <cstdlib>
 #include "Carta.h"
+using namespace std;
+
 class Baraja {
-	
-	public:
-		Carta cartas[72];
-	    Baraja();
-	    void mostrar();
-	    void barajar();
-	//	vector <zonaCartas> Repartir(int repartir);
+public:
+    vector<Carta> cartas;
+
+    Baraja();
+    void mostrar();
+    void barajar();
+    bool vacias();
+    Carta sacarCarta();
 };
 
-Baraja :: Baraja(){
-	
-	int indice=0;
-	for(int i=0; i<6; i++){
-		for(int j=0; j<12; j++){
-		
-		indice =(12*i)+j;
-		cartas[indice].color=i;
-	}
-	}
-}
-
-void Baraja:: mostrar(){
-	int indice =0;
-	for(int i=0; i<6; i++){
-		cout<<" "<<endl;
-		for(int j=0; j<12; j++){
-		cartas[indice].mostrar();
-		cout<<" ";
-		indice++;
+Baraja::Baraja() {
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 12; j++) {
+            cartas.push_back(Carta(i));
         }
- 		
-	}
-	
-	
+    }
 }
 
-void Baraja::barajar(){
-	cout<<"\nSe barajaron las cartas"<<endl;   
-    Carta aux;
-       
-    for (int i = 0; i < 2000; i++) {
-        int a = rand() % 72; 
-        int b = rand() % 72; 
-          
+void Baraja::mostrar() {
+    for (int i = 0; i < cartas.size(); i++) {
+        cartas[i].mostrar();
+        cout << " ";
+    }
+    cout << RESET << endl;
+}
+
+void Baraja::barajar() {
+    cout << "\nSe barajaron las cartas" << endl;
+    for (int i = 0; i < 100; i++) {
+        int a = rand() % cartas.size();
+        int b = rand() % cartas.size();
         Carta aux = cartas[a];
         cartas[a] = cartas[b];
         cartas[b] = aux;
     }
 }
 
-vector<zonaCartas> Baraja :: repartir(int repartir1){
-	vector<zonaCartas> carticas(4);
-	int indice=0;
-	for(int i=0; i<4; i++){
-    		carticas[i].agregarcarta(cartas[indice]);
-    		indice++;
-}	
-	return carticas;
+bool Baraja::vacias() {
+    return cartas.empty();
 }
+
+Carta Baraja::sacarCarta() {
+    Carta c = cartas.back();
+    cartas.pop_back();
+    return c;
+}
+
+#endif

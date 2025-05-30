@@ -49,4 +49,3 @@ void zonaCartas::mostrar() {
     }
     cout << RESET << endl;
 }
-
