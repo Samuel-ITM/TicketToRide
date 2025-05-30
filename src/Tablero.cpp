@@ -11,24 +11,25 @@ class Tablero {
 
     public:
         map<pair<int,int>, pair<string, string>> tablero;
-        
-        
-        
+
+
+
         void mostrarTablero();
-        void inicializarTablero();      
+        void inicializarTablero();
+        void marcarTrayecto(string origen, string destino, char jugadorID);
 };
 
 
 
 void Tablero::inicializarTablero(){
-    
+
     for (int fila = 1; fila <= 14; ++fila) {
         for (int col = 1; col <= 20; ++col) {
-            tablero[{fila, col}] = {BG_WHITE, "   "}; 
+            tablero[{fila, col}] = {BG_WHITE, "   "};
         }
     }
-    
-    
+
+
     //A
     tablero[{8,1}] = {BG_BLACK, " A "};
     //B
@@ -67,7 +68,7 @@ void Tablero::inicializarTablero(){
     tablero[{6,20}] = {BG_BLACK, " R "};
     //S
     tablero[{10,20}] = {BG_BLACK, " S "};
-    
+
 
     //intersecciones
     //A B rojo
@@ -92,7 +93,7 @@ void Tablero::inicializarTablero(){
     tablero[{5,6}] = {BG_GREEN, "   "};
     tablero[{6,6}] = {BG_GREEN, "   "};
     tablero[{7,6}] = {BG_GREEN, "   "};
-    
+
     //F G naranja
     tablero[{9,6}] = {BG_ORANGE, "   "};
     tablero[{10,6}] = {BG_ORANGE, "   "};
@@ -190,14 +191,131 @@ void Tablero::mostrarTablero(){
 
     for (int fila = 1; fila <= 14; ++fila) {
         for (int col = 1; col <= 20; ++col) {
-            
-            cout << tablero[{fila,col}].first 
-            <<tablero[{fila, col}].second 
+
+            cout << tablero[{fila,col}].first
+            <<tablero[{fila, col}].second
             << RESET;
-            
+
         }
         cout << endl;
     }
 
 
+}
+void Tablero::marcarTrayecto(string origen, string destino, char jugadorID) {
+    string marca = string(" ") + jugadorID + " ";
+
+
+    if ((origen == "A" && destino == "B") || (origen == "B" && destino == "A")) {
+        tablero[{5,1}] = {BG_BLACK, marca};
+        tablero[{5,2}] = {BG_BLACK, marca};
+        tablero[{6,1}] = {BG_BLACK, marca};
+        tablero[{7,1}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "A" && destino == "F") || (origen == "F" && destino == "A")) {
+        tablero[{8,2}] = {BG_BLACK, marca};
+        tablero[{8,3}] = {BG_BLACK, marca};
+        tablero[{8,4}] = {BG_BLACK, marca};
+        tablero[{8,5}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "D" && destino == "E") || (origen == "E" && destino == "D")) {
+        tablero[{1,5}] = {BG_BLACK, marca};
+        tablero[{1,6}] = {BG_BLACK, marca};
+        tablero[{2,6}] = {BG_BLACK, marca};
+        tablero[{3,6}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "E" && destino == "F") || (origen == "F" && destino == "E")) {
+        tablero[{5,6}] = {BG_BLACK, marca};
+        tablero[{6,6}] = {BG_BLACK, marca};
+        tablero[{7,6}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "F" && destino == "G") || (origen == "G" && destino == "F")) {
+        tablero[{9,6}] = {BG_BLACK, marca};
+        tablero[{10,6}] = {BG_BLACK, marca};
+        tablero[{11,6}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "C" && destino == "G") || (origen == "G" && destino == "C")) {
+        tablero[{12,5}] = {BG_BLACK, marca};
+        tablero[{12,4}] = {BG_BLACK, marca};
+        tablero[{12,3}] = {BG_BLACK, marca};
+        tablero[{13,3}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "F" && destino == "H") || (origen == "H" && destino == "F")) {
+        tablero[{8,7}] = {BG_BLACK, marca};
+        tablero[{8,8}] = {BG_BLACK, marca};
+        tablero[{8,9}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "H" && destino == "L") || (origen == "L" && destino == "H")) {
+        tablero[{9,10}] = {BG_BLACK, marca};
+        tablero[{10,10}] = {BG_BLACK, marca};
+        tablero[{11,10}] = {BG_BLACK, marca};
+        tablero[{12,10}] = {BG_BLACK, marca};
+        tablero[{12,11}] = {BG_BLACK, marca};
+        tablero[{12,12}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "H" && destino == "K") || (origen == "K" && destino == "H")) {
+        tablero[{8,11}] = {BG_BLACK, marca};
+        tablero[{8,12}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "K" && destino == "L") || (origen == "L" && destino == "K")) {
+        tablero[{9,13}] = {BG_BLACK, marca};
+        tablero[{10,13}] = {BG_BLACK, marca};
+        tablero[{11,13}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "K" && destino == "I") || (origen == "I" && destino == "K")) {
+        tablero[{7,13}] = {BG_BLACK, marca};
+        tablero[{6,13}] = {BG_BLACK, marca};
+        tablero[{6,12}] = {BG_BLACK, marca};
+        tablero[{6,11}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "I" && destino == "O") || (origen == "O" && destino == "I")) {
+        tablero[{4,11}] = {BG_BLACK, marca};
+        tablero[{4,12}] = {BG_BLACK, marca};
+        tablero[{4,13}] = {BG_BLACK, marca};
+        tablero[{4,14}] = {BG_BLACK, marca};
+        tablero[{4,15}] = {BG_BLACK, marca};
+        tablero[{4,16}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "J" && destino == "N") || (origen == "N" && destino == "J")) {
+        tablero[{2,13}] = {BG_BLACK, marca};
+        tablero[{2,14}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "N" && destino == "O") || (origen == "O" && destino == "N")) {
+        tablero[{2,16}] = {BG_BLACK, marca};
+        tablero[{2,17}] = {BG_BLACK, marca};
+        tablero[{3,17}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "O" && destino == "P") || (origen == "P" && destino == "O")) {
+        tablero[{5,17}] = {BG_BLACK, marca};
+        tablero[{6,17}] = {BG_BLACK, marca};
+        tablero[{7,17}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "K" && destino == "P") || (origen == "P" && destino == "K")) {
+        tablero[{8,14}] = {BG_BLACK, marca};
+        tablero[{8,15}] = {BG_BLACK, marca};
+        tablero[{8,16}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "P" && destino == "Q") || (origen == "Q" && destino == "P")) {
+        tablero[{9,17}] = {BG_BLACK, marca};
+        tablero[{10,17}] = {BG_BLACK, marca};
+        tablero[{11,17}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "M" && destino == "Q") || (origen == "Q" && destino == "M")) {
+        tablero[{13,17}] = {BG_BLACK, marca};
+        tablero[{14,17}] = {BG_BLACK, marca};
+        tablero[{14,16}] = {BG_BLACK, marca};
+        tablero[{14,15}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "Q" && destino == "S") || (origen == "S" && destino == "Q")) {
+        tablero[{12,18}] = {BG_BLACK, marca};
+        tablero[{12,19}] = {BG_BLACK, marca};
+        tablero[{12,20}] = {BG_BLACK, marca};
+        tablero[{11,20}] = {BG_BLACK, marca};
+    }
+    else if ((origen == "O" && destino == "R") || (origen == "R" && destino == "O")) {
+        tablero[{4,18}] = {BG_BLACK, marca};
+        tablero[{4,19}] = {BG_BLACK, marca};
+        tablero[{4,20}] = {BG_BLACK, marca};
+        tablero[{5,20}] = {BG_BLACK, marca};
+    }
 }
