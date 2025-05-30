@@ -18,7 +18,6 @@ Para jugar, sigue estos pasos:
 4. **Turnos**: En cada turno, un jugador puede:
    - Robar cartas de tren.
    - Reclamar una ruta entre dos ciudades si tiene las cartas necesarias.
-   - Robar cartas de objetivo adicionales.
 5. **Fin del Juego**: El juego termina cuando un jugador tiene menos de tres piezas de tren restantes. Se calculan los puntos y se determina el ganador.
 
 📌 Para más detalles sobre las reglas y mecánicas del juego, consulta el documento `Juego de trenes.pdf`.
